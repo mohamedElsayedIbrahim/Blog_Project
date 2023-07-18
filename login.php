@@ -12,18 +12,30 @@
         <img width="200" src="./img/PHP_logo.png" alt="php logo">
     </div>
     <h1 class="my-3">Login to system....</h1>
-
-    <form>
+    <div>
+        <?php
+            session_start();
+            if (isset($_SESSION['error_email'])) {
+                echo "<h6 class='text-danger'>{$_SESSION['error_email']}</h6>";
+                unlink($_SESSION['error_email']);
+            }
+            if (isset($_SESSION['error_password'])) {
+                echo "<h6 class='text-danger'>{$_SESSION['error_password']}</h6>";
+                unlink($_SESSION['error_password']);
+            }
+        ?>
+    </div>
+    <form action="./business_logic/handel_login.php" method="POST">
         <div class="mb-3">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username">
+            <label for="userEmail">userEmail</label>
+            <input type="text" name="email" class="form-control" id="userEmail">
         </div>
         <div class="mb-3">
             <label for="password">password</label>
-            <input type="text" class="form-control" id="password">
+            <input type="password" name="password" class="form-control" id="password">
         </div>
         <div class="mb-3 text-center">
-            <button class="btn btn-danger">Login system</button>
+            <button class="btn btn-danger" name="submit" type="submit">Login system</button>
         </div>
     </form>
    </div>

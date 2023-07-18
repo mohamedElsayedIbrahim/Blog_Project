@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<h1>Hello from panel</h1>
 
 <script src="./js/bootstrap.bundle.js"></script>
 </body>

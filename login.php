@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['login_status']))
+{
+    header("location:./panel.php");
+}
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,30 +23,32 @@
     <h1 class="my-3">Login to system....</h1>
     <div>
         <?php
-            session_start();
-            if (isset($_SESSION['error_email'])) {
-                echo "<h6 class='text-danger'>{$_SESSION['error_email']}</h6>";
-                unlink($_SESSION['error_email']);
+
+            if (isset($_SESSION['email_error'])) {
+                echo "<h6 class='text-danger'>{$_SESSION['email_error']}</h6>";
+                unset($_SESSION['email_error']);
             }
-            if (isset($_SESSION['error_password'])) {
-                echo "<h6 class='text-danger'>{$_SESSION['error_password']}</h6>";
-                unlink($_SESSION['error_password']);
+            if (isset($_SESSION['password_error'])) {
+                echo "<h6 class='text-danger'>{$_SESSION['password_error']}</h6>";
+                unset($_SESSION['password_error']);
             }
         ?>
     </div>
+
     <form action="./business_logic/handel_login.php" method="POST">
         <div class="mb-3">
-            <label for="userEmail">userEmail</label>
+            <label for="userEmail">Email</label>
             <input type="text" name="email" class="form-control" id="userEmail">
         </div>
         <div class="mb-3">
-            <label for="password">password</label>
+            <label for="password">Password</label>
             <input type="password" name="password" class="form-control" id="password">
         </div>
         <div class="mb-3 text-center">
             <button class="btn btn-danger" name="submit" type="submit">Login system</button>
         </div>
     </form>
+
    </div>
 
     <script src="./js/bootstrap.bundle.js"></script>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['login_status'])) {
+    header("location:./login.php");
+}
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +17,16 @@
 </head>
 <body>
 
+<?php
+require_once('./Layouts/nav.php');
+?>
+
 <h1>Hello from panel</h1>
 
+
+<?php
+require_once('./Layouts/footer.php');
+?>
 <script src="./js/bootstrap.bundle.js"></script>
 </body>
 </html>

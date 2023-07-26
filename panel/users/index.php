@@ -9,12 +9,13 @@ if (!isset($_SESSION['login_status'])) {
 
 ?>
 
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Panel | users</title>
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
 
 </head>
@@ -28,9 +29,10 @@ if (!isset($_SESSION['login_status'])) {
   <div class="my-3">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Add New category
+        Add New User
       </button>
     </div>
+
 
     <?php
   require_once('../../Layouts/error.php');
@@ -41,6 +43,7 @@ if (!isset($_SESSION['login_status'])) {
         <tr>
           <th>#</th>
           <th>title</th>
+          <th>Role</th>
           <th>handel</th>
         </tr>
       </thead>
@@ -48,7 +51,8 @@ if (!isset($_SESSION['login_status'])) {
       <tbody>
         <tr>
           <td>1</td>
-          <td>business</td>
+          <td>userone</td>
+          <td>admin</td>
           <td><a href="#" class="btn btn-danger">Delete</a> <button class="btn btn-warning">Edit</button></td>
         </tr>
       </tbody>
@@ -62,18 +66,30 @@ if (!isset($_SESSION['login_status'])) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add new user</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="../../business_logic/category_logic/handel_create_category.php" method="post">
+          <form action="../../business_logic/users_logic/handel_create_user.php" method="post">
+
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">title</label>
-              <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="ex:sport">
+              <label for="usernameInput" class="form-label">username</label>
+              <input type="text" class="form-control" name="usernameInput" id="usernameInput" placeholder="ex:sport">
             </div>
+
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">email</label>
+              <input type="email" class="form-control" name="emailInput" id="emailInput" placeholder="ex:sport">
+            </div>
+
+            <div class="mb-3">
+              <label for="passwordInput" class="form-label">password</label>
+              <input type="password" class="form-control" name="passwordInput" id="passwordInput" placeholder="ex:sport">
+            </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" name="submit" class="btn btn-primary">save data</button>
+              <button type="submit" class="btn btn-primary" name="submit">save data</button>
             </div>
           </form>
         </div>

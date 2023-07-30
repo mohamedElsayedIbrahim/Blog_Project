@@ -21,7 +21,34 @@ if (!isset($_SESSION['login_status'])) {
 require_once('./Layouts/nav.php');
 ?>
 
-<h1>Hello from panel</h1>
+<div class="container">
+<div class="row">
+    <div class="col-md-3">
+    <div class="bg-seconary p-3">
+    <h3>
+        <a href="./panel/category/index.php" class="text-dark">category</a>
+    </h3>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="bg-seconary p-3">
+    <h3>
+        <a href="./panel/articels/index.php" class="text-dark">articles</a>
+    </h3>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="bg-seconary p-3">
+    <h3>
+        <a href="./panel/users/index.php" class="text-dark">users</a>
+    </h3>
+    </div>
+    </div>
+
+</div>
+</div>
 
 
 <?php

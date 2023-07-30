@@ -19,3 +19,11 @@ function validEmail($input)
 {
     return filter_var($input,FILTER_VALIDATE_EMAIL) == false ? true : false;
 }
+
+function validate_file_size($file_size)
+{
+    if (($file_size)/(1024*1024) > 1) {
+        return  false;
+    }
+    return true;
+}

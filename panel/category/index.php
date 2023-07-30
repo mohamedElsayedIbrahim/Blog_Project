@@ -22,9 +22,15 @@ if (!isset($_SESSION['login_status'])) {
 <body>
   <?php
   require_once('../../Layouts/nav.php');
+  require_once('../../Layouts/breedcrumb.php');
   ?>
 
+
+
   <div class="container">
+    <?php
+      init_bread('category');
+    ?>
   <div class="my-3">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

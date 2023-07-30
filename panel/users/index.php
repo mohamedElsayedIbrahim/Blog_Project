@@ -21,11 +21,15 @@ if (!isset($_SESSION['login_status'])) {
 </head>
 
 <body>
-  <?php
+<?php
   require_once('../../Layouts/nav.php');
+  require_once('../../Layouts/breedcrumb.php');
   ?>
 
   <div class="container">
+  <?php
+      init_bread('users');
+    ?>
   <div class="my-3">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -49,12 +53,22 @@ if (!isset($_SESSION['login_status'])) {
       </thead>
 
       <tbody>
-        <tr>
+        <?php
+        require_once('../../funcations/database.php');
+      
+        require_once('../../App_view/usersList.php');
+
+        $userData = usersTable();
+
+        foreach ($userData as $value) {
+          echo "<tr>
           <td>1</td>
-          <td>userone</td>
-          <td>admin</td>
-          <td><a href="#" class="btn btn-danger">Delete</a> <button class="btn btn-warning">Edit</button></td>
-        </tr>
+          <td>{$value['username']}</td>
+          <td>{$value['role']}</td>
+          <td><a href='#' class='btn btn-danger'>Delete</a> <button class='btn btn-warning'>Edit</button></td>
+        </tr>";
+        }
+        ?>
       </tbody>
     </table>
   </div>
@@ -103,7 +117,7 @@ if (!isset($_SESSION['login_status'])) {
   ?>
 
   <script src="../../js/bootstrap.bundle.js"></script>
-
+  <script src="../../js/panel/user.js"></script>
 </body>
 
 </html>
